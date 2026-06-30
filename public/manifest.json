@@ -1,0 +1,15 @@
+{
+  "short_name": "Cheryne's",
+  "name": "Cheryne's Hotel Restaurant",
+  "icons": [
+    {
+      "src": "/images/logo.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": "/",
+  "background_color": "#0f766e",
+  "theme_color": "#0f766e",
+  "display": "standalone"
+}
