@@ -64,7 +64,7 @@ Generated pieces:
 Development admin:
 
 - Email: `admin@cherynes.com`
-- Password: `$2y$10$lifP8jB6OrpAbU40HqyhmelZ.DjV8yPtYeyRhM9upDZQYgRF5UUZu`
+- Password:`Your admin password`
 
 Change this immediately in production. The seed hash is for local development only.
 
