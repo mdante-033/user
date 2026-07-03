@@ -17,7 +17,8 @@
     }
   },
   "scripts": {
-    "test": "phpunit"
+    "test": "php ./vendor/bin/phpunit --configuration phpunit.xml",
+    "serve": "php -S localhost:3000 -t public router.php"
   },
   "config": {
     "sort-packages": true,

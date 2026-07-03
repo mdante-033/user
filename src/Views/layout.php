@@ -39,10 +39,10 @@ if (class_exists(\App\Services\WhatsAppService::class)) {
     <meta name="csrf-token" content="<?= e(csrf_token()) ?>">
     <link rel="canonical" href="<?= e(app_url($_SERVER['REQUEST_URI'] ?? '/')) ?>">
     
-    <!-- FIX: Paths pointing directly to your public folder setup -->
+    <!-- FIX: Paths pointing to the public assets directory -->
     <link href="<?= e(url('/images/logo.png')) ?>" rel="icon" type="image/png">
-    <link href="<?= e(url('/bootstrap-local.css')) ?>" rel="stylesheet">
-    <link href="<?= e(url('/style.css')) ?>" rel="stylesheet">
+    <link href="<?= e(url('/assets/css/bootstrap-local.css')) ?>" rel="stylesheet">
+    <link href="<?= e(url('/assets/css/style.css')) ?>" rel="stylesheet">
     
     <?php if (!empty($structuredData)): ?>
         <script type="application/ld+json"><?= json_encode($structuredData, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) ?></script>
@@ -119,6 +119,6 @@ if (class_exists(\App\Services\WhatsAppService::class)) {
 </div>
 
 <!-- FIX: Javascript bindings updated to public root paths -->
-<script src="<?= e(url('/main.js')) ?>"></script>
+<script src="<?= e(url('/assets/js/main.js')) ?>"></script>
 </body>
 </html>

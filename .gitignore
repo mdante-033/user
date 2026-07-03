@@ -1,0 +1,9 @@
+vendor/
+.env
+composer.lock
+logs/*.log
+public/assets/images/menu/*
+!public/assets/images/menu/.gitkeep
+.phpunit.cache/
+.DS_Store
+Thumbs.db
