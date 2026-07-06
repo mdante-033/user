@@ -51,10 +51,16 @@ Generated pieces:
    APP_URL=http://localhost:3000
    ```
 
-5. Run locally:
+5. Run locally using the built-in router so all routes map to `public/index.php`:
 
     ```bash
-    php -S localhost:3000 -t public
+    php -S localhost:3000 -t public router.php
+    ```
+
+    Or use Composer:
+
+    ```bash
+    composer serve
     ```
 
 6. Open `http://localhost:3000`.
