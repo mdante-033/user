@@ -78,3 +78,49 @@
         load();
     });
 })();
+
+(function () {
+    const STORAGE_KEY = 'cherynes-theme';
+    const root = document.documentElement;
+
+    const getStoredTheme = () => {
+        try {
+            return localStorage.getItem(STORAGE_KEY);
+        } catch (e) {
+            return null;
+        }
+    };
+
+    const setStoredTheme = (theme) => {
+        try {
+            localStorage.setItem(STORAGE_KEY, theme);
+        } catch (e) {
+            // localStorage unavailable (private browsing, etc.) - theme just won't persist.
+        }
+    };
+
+    const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const initialTheme = getStoredTheme() || (prefersDark ? 'dark' : 'light');
+    root.setAttribute('data-theme', initialTheme);
+
+    document.addEventListener('DOMContentLoaded', () => {
+        const toggle = document.querySelector('[data-theme-toggle]');
+        if (!toggle) {
+            return;
+        }
+
+        const updateLabel = (theme) => {
+            toggle.textContent = theme === 'dark' ? '☀️' : '🌙';
+            toggle.setAttribute('aria-label', theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode');
+        };
+
+        updateLabel(root.getAttribute('data-theme'));
+
+        toggle.addEventListener('click', () => {
+            const next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+            root.setAttribute('data-theme', next);
+            setStoredTheme(next);
+            updateLabel(next);
+        });
+    });
+})();
