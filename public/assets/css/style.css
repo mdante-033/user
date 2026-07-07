@@ -11,6 +11,53 @@
     --shadow: 0 16px 40px rgba(16, 24, 32, 0.12);
 }
 
+/* Dark mode: applied when <html data-theme="dark">. Toggled by main.js and
+   persisted in localStorage; falls back to the OS preference on first visit. */
+[data-theme="dark"] {
+    --ink: #f2f5f4;
+    --muted: #a7b3ae;
+    --paper: #0f1513;
+    --surface: #17201d;
+    --teal: #2dd4bf;
+    --teal-dark: #5eead4;
+    --coral: #f08a83;
+    --gold: #f0c674;
+    --line: #2a3531;
+    --shadow: 0 16px 40px rgba(0, 0, 0, 0.45);
+}
+
+[data-theme="dark"] .site-header {
+    background: rgba(15, 21, 19, .92);
+}
+
+[data-theme="dark"] input,
+[data-theme="dark"] select,
+[data-theme="dark"] textarea {
+    background: var(--surface);
+    color: var(--ink);
+}
+
+.theme-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.25rem;
+    height: 2.25rem;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    background: transparent;
+    color: var(--ink);
+    cursor: pointer;
+    font-size: 1rem;
+    line-height: 1;
+}
+
+.theme-toggle:hover,
+.theme-toggle:focus {
+    border-color: var(--teal);
+    color: var(--teal-dark);
+}
+
 * {
     box-sizing: border-box;
 }
@@ -21,6 +68,7 @@ body {
     background: var(--paper);
     font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
     line-height: 1.55;
+    transition: background-color .2s ease, color .2s ease;
 }
 
 a {
@@ -86,7 +134,6 @@ img {
     font-weight: 650;
 }
 
-.nav-call,
 .cart-link span {
     display: inline-flex;
     align-items: center;
@@ -184,11 +231,6 @@ img {
     line-height: 1.02;
     font-weight: 850;
     margin: .25rem 0 1rem;
-}
-
-.page-head {
-    padding: clamp(3rem, 8vw, 5.5rem) 0 2rem;
-    background: linear-gradient(120deg, #e8f4f1, #fff, #f9efe5);
 }
 
 .hero-subtitle {
@@ -308,9 +350,7 @@ img {
 .summary-total,
 .contact-strip-inner,
 .admin-head,
-.category-row,
-.status-form,
-.table-actions {
+.status-form {
     display: flex;
     justify-content: space-between;
     gap: .75rem;
@@ -437,8 +477,7 @@ textarea:focus {
     margin: 0;
 }
 
-.inline-form,
-.inline-create {
+.inline-form {
     display: flex;
     gap: .5rem;
     align-items: center;
@@ -471,24 +510,7 @@ textarea:focus {
     font-size: 1.1rem;
 }
 
-.brand-logo {
-    height: 40px;
-    width: auto;
-    max-width: 140px;
-    display: inline-block;
-    vertical-align: middle;
-    margin-right: 0.5rem;
-    object-fit: contain;
-}
-
-/* Mobile adjustment */
-@media (max-width: 768px) {
-    .brand-logo {
-        height: 32px;
-    }
-}
-.form-panel,
-.stack-form {
+.form-panel {
     display: grid;
     gap: .85rem;
 }
@@ -699,18 +721,6 @@ textarea:focus {
     text-decoration: none;
 }
 
-.admin-sidebar__link--disabled {
-    color: rgba(255, 255, 255, .48);
-    cursor: not-allowed;
-}
-
-.admin-sidebar__link--disabled:hover,
-.admin-sidebar__link--disabled:focus {
-    color: rgba(255, 255, 255, .48);
-    background: rgba(255, 255, 255, .03);
-    border-color: rgba(255, 255, 255, .1);
-}
-
 .admin-sidebar__footer {
     margin-top: auto;
 }
@@ -816,35 +826,6 @@ textarea:focus {
     font-size: clamp(1.7rem, 4vw, 2.5rem);
 }
 
-.admin-table textarea {
-    min-width: 220px;
-}
-
-.row-edit {
-    display: grid;
-    gap: .5rem;
-}
-
-.category-list {
-    display: grid;
-    gap: .5rem;
-    margin-top: .75rem;
-}
-
-.category-row form:first-child {
-    display: flex;
-    flex: 1;
-    gap: .5rem;
-}
-
-.check-row {
-    display: flex;
-    align-items: center;
-}
-
-.check-row input {
-    width: auto;
-}
 
 @media (max-width: 991px) {
     .filter-bar {
@@ -866,11 +847,16 @@ textarea:focus {
     .metric-grid {
         grid-template-columns: 1fr;
     }
+
+    .value-props {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
 }
 
 @media (max-width: 640px) {
     .testimonial-grid,
-    .contact-grid {
+    .contact-grid,
+    .value-props {
         grid-template-columns: 1fr;
     }
 

@@ -43,6 +43,15 @@ if (class_exists(\App\Services\WhatsAppService::class)) {
     <link href="<?= e(url('/images/logo.png')) ?>" rel="icon" type="image/png">
     <link href="<?= e(url('/assets/css/bootstrap-local.css')) ?>" rel="stylesheet">
     <link href="<?= e(url('/assets/css/style.css')) ?>" rel="stylesheet">
+    <script>
+        (function () {
+            try {
+                var stored = localStorage.getItem('cherynes-theme');
+                var theme = stored || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+                document.documentElement.setAttribute('data-theme', theme);
+            } catch (e) {}
+        })();
+    </script>
     
     <?php if (!empty($structuredData)): ?>
         <script type="application/ld+json"><?= json_encode($structuredData, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) ?></script>
@@ -68,6 +77,9 @@ if (class_exists(\App\Services\WhatsAppService::class)) {
                     <li class="nav-item"><a class="nav-link" href="<?= e(url('/reservations')) ?>">Reservations</a></li>
                     <li class="nav-item"><a class="nav-link" href="<?= e(url('/contact')) ?>">Contact</a></li>
                     <li class="nav-item"><a class="nav-link cart-link" href="<?= e(url('/cart')) ?>">Cart <span><?= cart_count() ?></span></a></li>
+                    <li class="nav-item">
+                        <button type="button" class="theme-toggle" data-theme-toggle aria-label="Switch to dark mode">🌙</button>
+                    </li>
                     <?php if ($user): ?>
                         <?php if (is_admin()): ?>
                             <li class="nav-item"><a class="nav-link" href="<?= e(url('/admin')) ?>">Admin</a></li>
