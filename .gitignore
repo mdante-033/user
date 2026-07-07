@@ -1,6 +1,5 @@
 vendor/
 .env
-composer.lock
 logs/*.log
 public/assets/images/menu/*
 !public/assets/images/menu/.gitkeep
