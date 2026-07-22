@@ -95,7 +95,7 @@ $reservations = $reservations ?? [];
                                 <tr>
                                     <td>#<?= e($order['id'] ?? '—') ?></td>
                                     <td><?= e($order['customer_name'] ?? 'Guest') ?></td>
-                                    <td><span class="status-pill"><?= e($order['status'] ?? 'pending') ?></span></td>
+                                    <td><span class="status-pill" data-status="<?= e($order['status'] ?? 'pending') ?>"><?= e($order['status'] ?? 'pending') ?></span></td>
                                     <td><?= e(money($order['total_amount'] ?? 0)) ?></td>
                                 </tr>
                                 <?php endforeach; ?>
@@ -141,7 +141,7 @@ $reservations = $reservations ?? [];
                                         </small>
                                     </td>
                                     <td><?= e($reservation['guests'] ?? 0) ?></td>
-                                    <td><span class="status-pill"><?= e($reservation['status'] ?? 'pending') ?></span></td>
+                                    <td><span class="status-pill" data-status="<?= e($reservation['status'] ?? 'pending') ?>"><?= e($reservation['status'] ?? 'pending') ?></span></td>
                                 </tr>
                                 <?php endforeach; ?>
                             <?php endif; ?>
