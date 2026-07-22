@@ -131,6 +131,7 @@ if (class_exists(\App\Services\WhatsAppService::class)) {
 </div>
 
 <!-- FIX: Javascript bindings updated to public root paths -->
+<script src="<?= e(url('/assets/js/bootstrap-local.js')) ?>"></script>
 <script src="<?= e(url('/assets/js/main.js')) ?>"></script>
 </body>
 </html>
