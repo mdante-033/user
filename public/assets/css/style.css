@@ -313,6 +313,70 @@ img {
 
 .menu-card {
     overflow: hidden;
+    transition: transform .18s ease, box-shadow .18s ease;
+}
+
+.menu-card:hover,
+.menu-card:focus-within {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 32px rgba(16, 24, 32, .12);
+}
+
+.admin-module,
+.contact-card,
+.testimonial {
+    transition: transform .18s ease, box-shadow .18s ease;
+}
+
+.admin-module:hover,
+.contact-card:hover,
+.testimonial:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 28px rgba(16, 24, 32, .1);
+}
+
+/* Status badges: pending/confirmed/preparing/ready/completed/cancelled (orders + reservations) */
+.status-pill {
+    display: inline-flex;
+    align-items: center;
+    padding: .3rem .65rem;
+    border-radius: 999px;
+    background: #e8f4f1;
+    color: var(--teal-dark);
+    text-transform: capitalize;
+    letter-spacing: .01em;
+}
+
+.status-pill[data-status="pending"] {
+    background: rgba(214, 160, 61, .16);
+    color: #8a6413;
+}
+
+.status-pill[data-status="confirmed"],
+.status-pill[data-status="preparing"] {
+    background: rgba(15, 118, 110, .14);
+    color: var(--teal-dark);
+}
+
+.status-pill[data-status="ready"],
+.status-pill[data-status="completed"] {
+    background: rgba(34, 139, 89, .16);
+    color: #1c7a4d;
+}
+
+.status-pill[data-status="cancelled"],
+.status-pill-unavailable {
+    background: rgba(217, 93, 85, .14);
+    color: var(--coral);
+}
+
+[data-theme="dark"] .status-pill[data-status="pending"] {
+    color: #f0c674;
+}
+
+[data-theme="dark"] .status-pill[data-status="ready"],
+[data-theme="dark"] .status-pill[data-status="completed"] {
+    color: #6fe3a5;
 }
 
 .menu-card img {
@@ -850,6 +914,30 @@ textarea:focus {
 
     .value-props {
         grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+/* Accessibility: visible keyboard focus everywhere interactive */
+a:focus-visible,
+button:focus-visible,
+.btn:focus-visible,
+[data-bs-toggle]:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+    outline: 3px solid var(--teal);
+    outline-offset: 2px;
+}
+
+/* Respect motion-sensitivity preferences */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: .001ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .001ms !important;
+        scroll-behavior: auto !important;
     }
 }
 
